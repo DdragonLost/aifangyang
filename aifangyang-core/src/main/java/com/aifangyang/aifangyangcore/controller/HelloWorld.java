@@ -21,6 +21,7 @@ public class HelloWorld
     public String helloWord(@PathVariable(value="userName") String userName,String passWord)
     {
         log.info("current user:"+userName+" ,password is :"+ passWord);
+        log.error("here is a test for log recording");
         return "Welcome to our system:"+userName;
     }
 }
