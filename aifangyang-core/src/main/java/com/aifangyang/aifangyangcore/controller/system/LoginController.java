@@ -2,6 +2,7 @@ package com.aifangyang.aifangyangcore.controller.system;
 
 import com.aifangyang.aifangyangcore.model.system.request.User;
 import com.aifangyang.aifangyangcore.service.LoginService;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
  * @author aifangyang
  */
 @RestController
-@RequestMapping("system/login")
+@RequestMapping("system")
 @Slf4j
+@Api(value="用户相关接口")
 public class LoginController
 {
     @Autowired
