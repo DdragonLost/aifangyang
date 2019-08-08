@@ -1,6 +1,6 @@
 package com.aifangyang.aifangyangcore.controller.system;
 
-import com.aifangyang.aifangyangcore.model.system.request.User;
+import com.aifangyang.aifangyangcore.model.request.User;
 import com.aifangyang.aifangyangcore.service.LoginService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;

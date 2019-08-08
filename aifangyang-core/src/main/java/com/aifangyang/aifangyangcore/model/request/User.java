@@ -1,4 +1,4 @@
-package com.aifangyang.aifangyangcore.model.system.request;
+package com.aifangyang.aifangyangcore.model.request;
 
 import lombok.Data;
 

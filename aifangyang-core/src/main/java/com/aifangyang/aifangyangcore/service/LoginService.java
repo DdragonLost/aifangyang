@@ -1,6 +1,6 @@
 package com.aifangyang.aifangyangcore.service;
 
-import com.aifangyang.aifangyangcore.model.system.request.User;
+import com.aifangyang.aifangyangcore.model.request.User;
 
 public interface LoginService {
     /**
