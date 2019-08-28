@@ -1,27 +1,38 @@
 package com.aifangyang.aifangyangcore.controller;
 
+import com.aifangyang.aifangyangcore.model.SysEnums;
+import com.aifangyang.aifangyangcore.model.po.system.DataEntity;
+import com.aifangyang.aifangyangcore.model.po.system.Response;
+import com.aifangyang.aifangyangcore.model.po.system.UserPo;
+import com.aifangyang.aifangyangcore.service.LoginService;
+import com.alibaba.druid.support.json.JSONUtils;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * demo
  * @author aifangyang
  */
 @RestController
-@RequestMapping("test")
 @Slf4j
 public class HelloWorld
 {
-    @RequestMapping(value = "/hello/{userName}",method = RequestMethod.GET)
-    @ResponseBody
-    public String helloWord(@PathVariable(value="userName") String userName,String passWord)
+    @Autowired
+    private LoginService loginService;
+    @RequestMapping("/")
+    public Response helloWord()
     {
-        log.info("current user:"+userName+" ,password is :"+ passWord);
-        log.error("here is a test for log recording");
-        return "Welcome to our system:"+userName;
+        DataEntity dataEntity = new DataEntity();
+        // 获取所有用户
+        List<UserPo> userPoList = loginService.selectAll();
+        dataEntity.setData(JSONUtils.toJSONString(userPoList));
+        Response response = new Response();
+        response.setStatus(SysEnums.OK);
+        response.setDataEntity(dataEntity);
+        return response;
     }
 }
