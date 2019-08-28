@@ -29,7 +29,7 @@ public class HelloWorld
         DataEntity dataEntity = new DataEntity();
         // 获取所有用户
         List<UserPo> userPoList = loginService.selectAll();
-        dataEntity.setData(JSONUtils.toJSONString(userPoList));
+        dataEntity.setData(userPoList);
         Response response = new Response();
         response.setStatus(SysEnums.OK);
         response.setDataEntity(dataEntity);

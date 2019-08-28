@@ -2,6 +2,7 @@ package com.aifangyang.aifangyangcore.controller;
 
 import com.aifangyang.aifangyangcore.AifangyangCoreApplication;
 import com.aifangyang.aifangyangcore.model.po.system.Response;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -44,7 +45,7 @@ public class HelloWorldTest {
     public void test1() throws Exception {
         ResponseEntity<Response> response = this.restTemplate.getForEntity(
                 this.base.toString() + "/aifangyang/", Response.class, "");
-        System.out.println(String.format("测试结果为：%s", response.getBody()));
+        Assert.assertEquals("200",response.getBody().getStatus());
     }
 
 }

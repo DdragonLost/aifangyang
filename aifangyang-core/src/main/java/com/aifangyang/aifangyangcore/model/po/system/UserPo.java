@@ -16,7 +16,7 @@ import java.util.Date;
 public class UserPo {
     @Id //这是一个主键
     @GeneratedValue(strategy = GenerationType.IDENTITY)//自增主键
-    private Integer id;
+    private String id;
 
     @Column(name = "USER_NAME",length = 255) //这是和数据表对应的一个列
     private String userName;
