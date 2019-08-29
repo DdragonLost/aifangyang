@@ -1,11 +1,11 @@
 package com.aifangyang.aifangyangcore.controller;
 
+import com.aifangyang.aifangyangcore.Exception.ServiceException;
 import com.aifangyang.aifangyangcore.model.SysEnums;
 import com.aifangyang.aifangyangcore.model.po.system.DataEntity;
 import com.aifangyang.aifangyangcore.model.po.system.Response;
 import com.aifangyang.aifangyangcore.model.po.system.UserPo;
 import com.aifangyang.aifangyangcore.service.LoginService;
-import com.alibaba.druid.support.json.JSONUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +23,7 @@ public class HelloWorld
 {
     @Autowired
     private LoginService loginService;
+
     @RequestMapping("/")
     public Response helloWord()
     {
@@ -34,5 +35,15 @@ public class HelloWorld
         response.setStatus(SysEnums.OK);
         response.setDataEntity(dataEntity);
         return response;
+    }
+
+    @RequestMapping("/exception01")
+    public Response exception01() throws ServiceException {
+        throw new ServiceException("业务异常，ID不能唯为空");
+    }
+
+    @RequestMapping("/exception02")
+    public Response exception02() throws Exception {
+        throw new Exception("系统异常，请联系程序员～");
     }
 }
