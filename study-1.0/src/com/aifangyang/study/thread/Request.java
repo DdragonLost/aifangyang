@@ -1,4 +1,4 @@
-package com.aifangyang.study;
+package com.aifangyang.study.thread;
 
 public class Request {
     private String name;

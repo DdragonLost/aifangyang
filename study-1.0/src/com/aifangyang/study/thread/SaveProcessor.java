@@ -1,8 +1,8 @@
-package com.aifangyang.study;
+package com.aifangyang.study.thread;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
-public class PrintProcessor extends Thread implements IReuqestProccessor {
+public class SaveProcessor extends Thread implements IReuqestProccessor {
     // 阻塞队列
     LinkedBlockingQueue<Request> requests = new LinkedBlockingQueue<>();
 
@@ -10,11 +10,11 @@ public class PrintProcessor extends Thread implements IReuqestProccessor {
 
     private volatile boolean isFinish = false;
 
-    public PrintProcessor(){
+    public SaveProcessor(){
 
     }
 
-    public PrintProcessor(IReuqestProccessor nextPorcessor){
+    public SaveProcessor(IReuqestProccessor nextPorcessor){
         this.nextPorcessor = nextPorcessor;
     }
 
@@ -27,10 +27,12 @@ public class PrintProcessor extends Thread implements IReuqestProccessor {
         while(!isFinish){
             try {
                 Request take = requests.take();// 阻塞式获取数据
-                // 真正处理逻辑
-                System.out.println("PrintProcessor : "+ take);
+                // 真正处理逻辑 store to mysql
+                System.out.println("SaveProcessor : "+ take);
                 // 交给责任链的下个节点
-                nextPorcessor.processor(take);
+                if(nextPorcessor!=null){
+                    nextPorcessor.processor(take);
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
