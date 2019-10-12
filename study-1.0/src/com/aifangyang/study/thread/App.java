@@ -35,6 +35,12 @@ public class App{
      * waiting （sleep\wait\join\LockSupport.park) 通过notify、notifyAll、LockSupport.unpark返回执行状态
      * time_waiting是带时间的等待，指的是超出指定时间则会放弃等待
      */
+
+    /*
+     * 线程安全 是因为资源是共享的
+     * 希望结果符合预期
+     * 分布式锁
+     */
     public void setUp(){
         SaveProcessor saveProcessor = new SaveProcessor();
         saveProcessor.start();
