@@ -45,10 +45,12 @@ public class HungerSingletonTest {
             //Write Obj to file
             ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("tempFile"));
             oos.writeObject(LazySingleton.getInstance());
+            oos.close();
             //Read Obj from file
             File file = new File("tempFile");
             ObjectInputStream ois =  new ObjectInputStream(new FileInputStream(file));
             LazySingleton newInstance = (LazySingleton) ois.readObject();
+            ois.close();
             // 判断是否是同一个对象
             System.out.println(newInstance == LazySingleton.getInstance());
         }catch (Exception e){
